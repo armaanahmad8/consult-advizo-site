@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insights — Consult Advizo</title>
+<meta name="description" content="Field notes on growth, AI implementation and cross-border expansion for mid-market companies.">
+<link rel="stylesheet" href="advizo.css">
+</head>
+<body>
+
+<div class="read-progress" id="readProgress" aria-hidden="true"></div>
+
+<article class="article" id="articleRoot" data-screen-label="Article">
+  <!-- rendered by JS -->
+</article>
+
+<section class="cta-band">
+  <div class="wrap cta-inner reveal in">
+    <div>
+      <span class="eyebrow no-rule" style="color:var(--gold)">From reading to results</span>
+      <h2 class="h1" style="color:#fff; margin:.6rem 0 0; max-width:18ch">Turn a perspective into a plan.</h2>
+      <p class="lede" style="color:#cfe0d6; max-width:46ch; margin-top:1rem">Book a Growth &amp; AI Diagnostic and get a 90-day roadmap built for your numbers.</p>
+    </div>
+    <div class="cta-act">
+      <a class="btn btn-gold" href="contact.html">Book a Diagnostic <span class="arr">→</span></a>
+      <a class="btn btn-on-dark" href="insights.html">More insights</a>
+    </div>
+  </div>
+</section>
+
+<script src="insights-data.js"></script>
+<script src="advizo.js"></script>
+<script>
+(function(){
+  var DATA = window.ADVIZO_INSIGHTS || [];
+  function param(k){ return new URLSearchParams(location.search).get(k); }
+  var id = param('id') || (DATA[0] && DATA[0].id);
+  var a = DATA.find(function(x){ return x.id===id; }) || DATA[0];
+  var root = document.getElementById('articleRoot');
+  if(!a){ root.innerHTML='<div class="wrap" style="padding:160px 0"><p>Article not found. <a class="link-arr" href="insights.html">Back to Insights →</a></p></div>'; return; }
+
+  document.title = a.title + ' — Consult Advizo';
+
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function block(b){
+    if(b.type==='p') return '<p class="'+(b.lead?'art-lead':'art-p')+'">'+esc(b.text)+'</p>';
+    if(b.type==='h2') return '<h2 class="art-h2">'+esc(b.text)+'</h2>';
+    if(b.type==='list') return '<ul class="art-list">'+b.items.map(function(i){return '<li>'+esc(i)+'</li>';}).join('')+'</ul>';
+    if(b.type==='callout') return '<aside class="art-callout"><span class="art-callout-mark">“</span><p>'+esc(b.text)+'</p></aside>';
+    if(b.type==='stat') return '<div class="art-stats">'+b.items.map(function(s){return '<div class="art-stat"><span class="art-stat-n">'+s.n+'</span><span class="art-stat-l">'+s.label+'</span></div>';}).join('')+'</div>';
+    if(b.type==='steps') return '<div class="art-steps">'+b.items.map(function(s){return '<div class="art-step"><span class="art-step-n">'+s.n+'</span><div><h3 class="art-step-t">'+s.title+'</h3><p>'+s.text+'</p></div></div>';}).join('')+'</div>';
+    if(b.type==='quote') return '<blockquote class="art-quote">'+esc(b.text)+'</blockquote>';
+    return '';
+  }
+
+  // related: same kind first, then others
+  var related = DATA.filter(function(x){ return x.id!==a.id; });
+  related.sort(function(x,y){ return (y.kind===a.kind?1:0)-(x.kind===a.kind?1:0); });
+  related = related.slice(0,3);
+
+  var html = ''+
+    '<div class="art-head">'+
+      '<div class="wrap art-head-inner">'+
+        '<a class="art-back link-arr" href="insights.html"><span class="arr" style="transform:rotate(180deg)">→</span> Insights</a>'+
+        '<div class="art-meta-top"><span class="chip">'+a.kind+'</span><span class="chip chip-ghost">'+a.category+'</span><span class="art-readtime">'+(a.readTime||'')+'</span></div>'+
+        '<h1 class="art-title">'+a.title+'</h1>'+
+        '<p class="art-dek">'+a.dek+'</p>'+
+        '<div class="art-byline"><span class="art-av">CA</span><div><strong>Consult Advizo</strong><span>Strategic advisory · India · GCC · USA</span></div></div>'+
+      '</div>'+
+    '</div>'+
+    (a.metric ? '<div class="wrap"><div class="art-metric-bar"><span class="art-metric-label">Headline outcome</span><span class="art-metric-v">'+a.metric+'</span></div></div>' : '')+
+    '<div class="wrap art-body">'+
+      a.body.map(block).join('')+
+      (a.note ? '<p class="art-note">'+a.note+'</p>' : '')+
+    '</div>'+
+    '<div class="wrap art-foot">'+
+      '<div class="art-foot-cta"><div><span class="eyebrow">Next step</span><h3 class="h3" style="margin:.4rem 0 0; max-width:24ch">Want this run on your business?</h3></div><a class="btn btn-primary" href="contact.html">Book a Diagnostic <span class="arr">→</span></a></div>'+
+    '</div>'+
+    '<div class="related-sec"><div class="wrap"><div class="related-head"><span class="eyebrow">Keep reading</span></div>'+
+      '<div class="related-grid">'+related.map(function(r){
+        return '<a class="related-card" href="article.html?id='+r.id+'"><span class="rc-kind chip">'+r.kind+'</span><h4>'+r.title+'</h4><span class="rc-meta muted">'+r.category+' · '+(r.readTime||'')+'</span><span class="link-arr">Read <span class="arr">→</span></span></a>';
+      }).join('')+'</div></div></div>';
+
+  root.innerHTML = html;
+
+  // reading progress
+  var bar = document.getElementById('readProgress');
+  function onScroll(){
+    var h = document.body.scrollHeight - window.innerHeight;
+    var p = h>0 ? (window.scrollY/h) : 0;
+    bar.style.transform = 'scaleX('+Math.min(1,Math.max(0,p))+')';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+})();
+</script>
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#fbfbf8"/><rect x="24" y="26" width="52" height="7" rx="3.5" fill="#07452c"/><rect x="24" y="42" width="52" height="5" rx="2.5" fill="#9aa69f"/><rect x="24" y="52" width="52" height="5" rx="2.5" fill="#9aa69f"/><rect x="24" y="62" width="34" height="5" rx="2.5" fill="#9aa69f"/><rect x="24" y="74" width="20" height="6" rx="3" fill="#d2af47"/></svg>
+</template>
+</body>
+</html>
