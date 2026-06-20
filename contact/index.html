@@ -99,6 +99,7 @@
         <h3 class="h3">Request received.</h3>
         <p class="muted">Thank you — a member of the founding team will be in touch within one business day to lock your diagnostic scope. Keep an eye on your inbox.</p>
         <a class="link-arr" href="/services/#diagnostic">See what's included in the Diagnostic <span class="arr">→</span></a>
+        <p style="margin-top:16px"><button type="button" id="cfReset" class="link-arr" style="background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer">Send another request <span class="arr">→</span></button></p>
       </div>
     </div>
   </div>
@@ -130,17 +131,19 @@
     var success = document.getElementById('cfSuccess');
     if(!form) return;
     var btn = form.querySelector('.cf-submit');
-    function showSuccess(){ form.setAttribute('hidden',''); success.removeAttribute('hidden'); }
+    var btnHTML = btn ? btn.innerHTML : '';
+    function showSuccess(){ if(btn){ btn.disabled = true; btn.innerHTML = 'Submitted ✓'; } form.setAttribute('hidden',''); success.removeAttribute('hidden'); }
+    function resetForm(){ form.reset(); if(btn){ btn.disabled = false; btn.innerHTML = btnHTML; } success.setAttribute('hidden',''); form.removeAttribute('hidden'); var f=form.querySelector('input,select,textarea'); if(f) f.focus(); }
+    var resetBtn = document.getElementById('cfReset');
+    if(resetBtn){ resetBtn.addEventListener('click', resetForm); }
     form.addEventListener('submit', function(e){
       e.preventDefault();
       if(!form.checkValidity()){ form.reportValidity(); return; }
       var data = new FormData(form);
       data.append('page', 'Book a Diagnostic');
       data.append('submittedAt', new Date().toISOString());
-      if(!SHEET_ENDPOINT){ showSuccess(); return; }
-      if(btn){ btn.disabled = true; btn.innerHTML = 'Submitted ✓'; }
-      fetch(SHEET_ENDPOINT, { method:'POST', mode:'no-cors', body:data })
-        .then(showSuccess).catch(showSuccess);
+      if(SHEET_ENDPOINT){ fetch(SHEET_ENDPOINT, { method:'POST', mode:'no-cors', body:data }).catch(function(){}); }
+      showSuccess();
     });
   })();
 </script>
