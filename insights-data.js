@@ -13,6 +13,7 @@ window.ADVIZO_INSIGHTS = [
   dek: "Three years flat at ₹3.2 Cr. Fourteen months later, ₹4.5 Cr — no funding, no acquisition. Just clarity on who to target, what to charge, and how to sell it.",
   readTime: "7 min read",
   metric: "+40% revenue",
+  image: "/assets/case-jaipur-textile.jpg",
   note: "Client name and product details anonymised at the client's request.",
   body: [
     {type:"h2", text:"The situation"},

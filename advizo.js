@@ -5,15 +5,17 @@
   'use strict';
 
   const PAGES = [
-    { href:'index.html',      label:'Home' },
-    { href:'services.html',   label:'Services' },
-    { href:'industries.html', label:'Industries' },
-    { href:'about.html',      label:'About' },
-    { href:'insights.html',   label:'Insights' },
-    { href:'contact.html',    label:'Contact' },
+    { href:'/',            label:'Home' },
+    { href:'/services/',   label:'Services' },
+    { href:'/industries/', label:'Industries' },
+    { href:'/about/',      label:'About' },
+    { href:'/insights/',   label:'Insights' },
+    { href:'/contact/',    label:'Contact' },
   ];
 
-  const here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  let here = location.pathname.replace(/index\.html$/, '');
+  if (!here.endsWith('/')) here += '/';
+  here = here.toLowerCase();
 
   /* ---- logo mark (SVG, exact brand triangles) ---- */
   function markSVG(scale){
@@ -37,19 +39,19 @@
     nav.className = 'nav';
     nav.innerHTML = `
       <div class="nav-inner">
-        <a class="brand" href="index.html" aria-label="Consult Advizo home">
-          <img src="assets/advizo-logo.png" alt="Consult Advizo" class="brand-logo">
+        <a class="brand" href="/" aria-label="Consult Advizo home">
+          <img src="/assets/advizo-logo.png" alt="Consult Advizo" class="brand-logo">
         </a>
         <nav class="nav-links" aria-label="Primary">${links}</nav>
         <div class="nav-cta">
-          <a class="btn btn-primary" href="contact.html">Book a Diagnostic <span class="arr">→</span></a>
+          <a class="btn btn-primary" href="/contact/">Book a Diagnostic <span class="arr">→</span></a>
           <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
         </div>
       </div>
       <div class="mobile-menu">${mlinks}
-        <a class="btn btn-primary" href="contact.html">Book a Diagnostic →</a>
+        <a class="btn btn-primary" href="/contact/">Book a Diagnostic →</a>
       </div>`;
     document.body.prepend(nav);
 
@@ -76,8 +78,8 @@
       <div class="wrap-wide">
         <div class="foot-grid">
           <div class="foot-col foot-brand">
-            <a class="brand" href="index.html" style="margin-bottom:18px">
-              <img src="assets/advizo-logo-light.png" alt="Consult Advizo" class="brand-logo brand-logo-foot">
+            <a class="brand" href="/" style="margin-bottom:18px">
+              <img src="/assets/advizo-logo-light.png" alt="Consult Advizo" class="brand-logo brand-logo-foot">
             </a>
             <p style="max-width:34ch; color:#a9bfb2; font-size:.96rem; line-height:1.6; margin:.4rem 0 1.4rem">
               Big&nbsp;4-grade growth and AI consulting for companies the Big&nbsp;4 can't afford to serve.</p>
@@ -88,26 +90,26 @@
           <div class="foot-col">
             <h4>Services</h4>
             <ul>
-              <li><a href="services.html#diagnostic">Growth &amp; AI Diagnostic</a></li>
-              <li><a href="services.html#strategy-office">Strategy Office</a></li>
-              <li><a href="services.html#transformation">Transformation Programs</a></li>
-              <li><a href="services.html#ai">AI &amp; Digital Implementation</a></li>
+              <li><a href="/services/#diagnostic">Growth &amp; AI Diagnostic</a></li>
+              <li><a href="/services/#strategy-office">Strategy Office</a></li>
+              <li><a href="/services/#transformation">Transformation Programs</a></li>
+              <li><a href="/services/#ai">AI &amp; Digital Implementation</a></li>
             </ul>
           </div>
           <div class="foot-col">
             <h4>Firm</h4>
             <ul>
-              <li><a href="industries.html">Industries</a></li>
-              <li><a href="about.html">About &amp; Team</a></li>
-              <li><a href="about.html#why">Why Consult Advizo</a></li>
-              <li><a href="insights.html">Insights</a></li>
-              <li><a href="contact.html">Contact</a></li>
+              <li><a href="/industries/">Industries</a></li>
+              <li><a href="/about/">About &amp; Team</a></li>
+              <li><a href="/about/#why">Why Consult Advizo</a></li>
+              <li><a href="/insights/">Insights</a></li>
+              <li><a href="/contact/">Contact</a></li>
             </ul>
           </div>
           <div class="foot-col">
             <h4>Get started</h4>
             <ul>
-              <li><a href="contact.html">Book a Diagnostic</a></li>
+              <li><a href="/contact/">Book a Diagnostic</a></li>
               <li><a href="mailto:business@consultadvizo.com">business@consultadvizo.com</a></li>
               <li><a href="tel:+919110096281">+91 91100 96281</a></li>
               <li><a href="https://www.linkedin.com/company/consult-advizo/" target="_blank" rel="noopener">LinkedIn</a></li>

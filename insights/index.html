@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insights — Consult Advizo</title>
+<meta name="description" content="Field notes on growth, pricing, operations, AI and cross-border expansion for mid-market companies — plus detailed client case studies.">
+<link rel="stylesheet" href="/advizo.css">
+</head>
+<body>
+
+<section class="page-hero" data-screen-label="Insights — Hero">
+  <div class="page-hero-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eyebrow reveal in">Insights</span>
+    <h1 class="display reveal in d1" style="max-width:16ch; margin:.5rem 0 0">Thinking for<br><span class="serif-it" style="color:var(--green-500)">operators.</span></h1>
+    <p class="lede reveal in d2" style="max-width:58ch; margin-top:1.4rem">Field notes on growth, pricing, operations and cross-border expansion — written for founders who have to make the call, not just read about it. Plus the case studies behind the numbers.</p>
+  </div>
+</section>
+
+<!-- FEATURED CASE STUDY -->
+<section class="section-pad-sm" id="featured">
+  <div class="wrap"><div class="reveal" id="featuredSlot"></div></div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="section-pad-sm">
+  <div class="wrap">
+    <figure class="testi reveal">
+      <span class="testi-mark">“</span>
+      <blockquote class="testi-q">In six months we recovered ₹38 lakhs in revenue without a single new client. The engagement fee paid for itself in the first quarter.</blockquote>
+      <figcaption class="testi-by">
+        <span class="testi-meta">Director, Manufacturing MSME · Pune</span>
+        <span class="muted">₹6 Cr revenue · anonymised at client request</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ARTICLES + CASE STUDIES GRID -->
+<section class="section-pad-sm">
+  <div class="wrap">
+    <div class="ins-head reveal">
+      <h2 class="h2">All insights</h2>
+      <div class="ins-filters" id="insFilters"></div>
+    </div>
+    <div class="ins-grid" id="insGrid"></div>
+  </div>
+</section>
+
+<!-- LINKEDIN ENGINE -->
+<section class="section-pad-sm linkedin-sec panel-paper2">
+  <div class="wrap li-inner reveal">
+    <div>
+      <span class="eyebrow">The LinkedIn engine</span>
+      <h2 class="h2 balance" style="margin:.5rem 0 .8rem">Every post points back here.</h2>
+      <p class="lede muted pretty" style="max-width:46ch">We publish in public — frameworks, engagement notes and field observations. Follow along, or bring the conversation in-house.</p>
+    </div>
+    <a class="btn btn-primary" href="https://www.linkedin.com/company/consultadvizo" target="_blank" rel="noopener">Follow on LinkedIn <span class="arr">→</span></a>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap cta-inner reveal">
+    <div>
+      <span class="eyebrow no-rule" style="color:var(--gold)">From reading to results</span>
+      <h2 class="h1" style="color:#fff; margin:.6rem 0 0; max-width:18ch">Turn a perspective into a plan.</h2>
+      <p class="lede" style="color:#cfe0d6; max-width:46ch; margin-top:1rem">Book a Growth &amp; AI Diagnostic and get a 90-day roadmap built for your numbers.</p>
+    </div>
+    <div class="cta-act">
+      <a class="btn btn-gold" href="/contact/">Book a Diagnostic <span class="arr">→</span></a>
+      <a class="btn btn-on-dark" href="/services/">See our services</a>
+    </div>
+  </div>
+</section>
+
+<script src="/insights-data.js"></script>
+<script src="/advizo.js"></script>
+<script>
+(function(){
+  var DATA = window.ADVIZO_INSIGHTS || [];
+
+  // Featured = first case study
+  var feat = DATA.find(function(x){return x.kind==='Case study';}) || DATA[0];
+  if(feat){
+    document.getElementById('featuredSlot').innerHTML =
+      '<a class="feature-case" href="/article/?id='+feat.id+'">'+
+        '<div class="fc-media">'+(feat.image?'<img class="fc-img" src="'+feat.image+'" alt="'+feat.title+'">':'<div class="ph" data-label="'+feat.category+'"></div>'+(feat.metric?'<span class="fc-badge">'+feat.metric+'</span>':''))+'</div>'+
+        '<div class="fc-body">'+
+          '<div class="art-meta-top"><span class="chip">Featured '+feat.kind.toLowerCase()+'</span><span class="chip chip-ghost">'+feat.category+'</span></div>'+
+          '<h2 class="h2 balance" style="margin:.6rem 0 .8rem">'+feat.title+'</h2>'+
+          '<p class="muted pretty">'+feat.dek+'</p>'+
+          '<span class="link-arr">Read the case study <span class="arr">→</span></span>'+
+        '</div>'+
+      '</a>';
+  }
+
+  // Filters
+  var cats = ['All'].concat(DATA.map(function(x){return x.category;}).filter(function(v,i,arr){return arr.indexOf(v)===i;}));
+  var filtersEl = document.getElementById('insFilters');
+  filtersEl.innerHTML = cats.map(function(c,i){return '<button class="filt'+(i===0?' active':'')+'" data-cat="'+c+'">'+c+'</button>';}).join('');
+
+  var grid = document.getElementById('insGrid');
+  function card(x){
+    return '<a class="ins-card" href="/article/?id='+x.id+'" data-cat="'+x.category+'">'+
+      '<div class="ins-card-body">'+
+        '<div class="ins-meta"><span class="chip'+(x.kind==='Case study'?'':' chip-ghost')+'">'+x.kind+'</span><span class="muted">'+(x.readTime||'')+'</span></div>'+
+        '<h3 class="h3">'+x.title+'</h3>'+
+        '<p class="muted pretty">'+x.dek+'</p>'+
+        '<span class="link-arr">Read <span class="arr">→</span></span>'+
+      '</div></a>';
+  }
+  function render(cat){
+    var items = cat==='All' ? DATA : DATA.filter(function(x){return x.category===cat;});
+    grid.innerHTML = items.map(card).join('');
+    if(window.__advizoReveal) window.__advizoReveal();
+  }
+  render('All');
+
+  filtersEl.addEventListener('click', function(e){
+    var b = e.target.closest('.filt'); if(!b) return;
+    filtersEl.querySelectorAll('.filt').forEach(function(f){f.classList.remove('active');});
+    b.classList.add('active');
+    render(b.dataset.cat);
+  });
+})();
+</script>
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#07452c"/><rect x="30" y="32" width="40" height="6" rx="3" fill="#d2af47"/><rect x="30" y="46" width="40" height="6" rx="3" fill="#cfe0d6"/><rect x="30" y="60" width="26" height="6" rx="3" fill="#00227b"/></svg>
+</template>
+</body>
+</html>
