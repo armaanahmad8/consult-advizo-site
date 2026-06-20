@@ -66,7 +66,7 @@
         </div>
         <div class="cf-row">
           <label>Work email<input type="email" name="email" required placeholder="you@company.com"></label>
-          <label>Phone <span class="opt">optional</span><input type="tel" name="phone" placeholder="+91 / +971 / +1"></label>
+          <label>Phone<input type="tel" name="phone" required placeholder="+91 / +971 / +1"></label>
         </div>
         <label>Revenue band
           <select name="revenue" required>
@@ -78,9 +78,10 @@
             <option>Pre-revenue / startup</option>
           </select>
         </label>
-        <label>Which line are you exploring? <span class="opt">optional</span>
-          <select name="service">
-            <option value="" selected>Not sure yet — recommend one</option>
+        <label>Which line are you exploring?
+          <select name="service" required>
+            <option value="" disabled selected>Select a line</option>
+            <option>Not sure yet — recommend one</option>
             <option>Growth &amp; AI Diagnostic</option>
             <option>Strategy Office (subscription)</option>
             <option>Transformation Programs</option>
@@ -137,7 +138,7 @@
       data.append('page', 'Book a Diagnostic');
       data.append('submittedAt', new Date().toISOString());
       if(!SHEET_ENDPOINT){ showSuccess(); return; }
-      if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+      if(btn){ btn.disabled = true; btn.innerHTML = 'Submitted ✓'; }
       fetch(SHEET_ENDPOINT, { method:'POST', mode:'no-cors', body:data })
         .then(showSuccess).catch(showSuccess);
     });

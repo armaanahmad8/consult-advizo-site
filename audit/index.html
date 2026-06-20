@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Revenue Leakage Audit — Consult Advizo</title>
+<meta name="description" content="Download the free MSME Revenue Leakage Audit — a 6-point self-audit to find the 18–25% of revenue most mid-market businesses can recover before acquiring a single new client.">
+<link rel="stylesheet" href="/advizo.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BK64XNJ0NB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BK64XNJ0NB');
+</script>
+<link rel="canonical" href="https://consultadvizo.com/audit/">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Consult Advizo">
+<meta property="og:title" content="Free Revenue Leakage Audit — Consult Advizo">
+<meta property="og:description" content="Download the free MSME Revenue Leakage Audit — a 6-point self-audit to find the 18–25% of revenue most mid-market businesses can recover before…">
+<meta property="og:url" content="https://consultadvizo.com/audit/">
+<meta property="og:image" content="https://consultadvizo.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Revenue Leakage Audit — Consult Advizo">
+<meta name="twitter:description" content="Download the free MSME Revenue Leakage Audit — a 6-point self-audit to find the 18–25% of revenue most mid-market businesses can recover before…">
+<meta name="twitter:image" content="https://consultadvizo.com/assets/og-image.jpg">
+</head>
+<body>
+
+<section class="contact-hero" data-screen-label="Audit — Hero">
+  <div class="contact-grid wrap-wide">
+    <!-- LEFT: pitch -->
+    <div class="contact-left">
+      <span class="eyebrow reveal in">Free download</span>
+      <h1 class="h1 balance reveal in d1" style="margin:.5rem 0 0">Where is your revenue leaking?</h1>
+      <p class="lede reveal in d2" style="margin-top:1.2rem; max-width:44ch">The average MSME in the &#8377;2&ndash;15&nbsp;Cr range has <strong>18&ndash;25% of revenue recoverable</strong> &mdash; before a single new client. This 6-point self-audit is exactly how our consultants find it.</p>
+
+      <ul class="contact-promises reveal in d3">
+        <li><span class="cp-ico">&#10038;</span><div><strong>6 leakage categories</strong><span>pricing, scope creep, churn, sales gaps &amp; more</span></div></li>
+        <li><span class="cp-ico">&#10038;</span><div><strong>A self-score</strong><span>see how much revenue you can likely recover</span></div></li>
+        <li><span class="cp-ico">&#10038;</span><div><strong>60&ndash;90 day fixes</strong><span>practical, no new headcount required</span></div></li>
+      </ul>
+      <p class="reveal in d4" style="margin-top:18px; color:var(--slate); font-size:.92rem">Instant download. No spam &mdash; ever.</p>
+    </div>
+
+    <!-- RIGHT: form -->
+    <div class="contact-form-wrap reveal in d2">
+      <form id="auditForm" class="contact-form" novalidate>
+        <label>Full name<input type="text" name="name" required placeholder="Your name"></label>
+        <label>Work email<input type="email" name="email" required placeholder="you@company.com"></label>
+        <button class="btn btn-primary cf-submit" type="submit">Send me the audit <span class="arr">&rarr;</span></button>
+        <p class="cf-fine">We&rsquo;ll occasionally email you practical growth ideas. Unsubscribe anytime.</p>
+      </form>
+      <div class="cf-success" id="auditSuccess" hidden>
+        <span class="cf-check">&#10003;</span>
+        <h3 class="h3">Your audit is ready.</h3>
+        <p class="muted">Thanks! Your download should start automatically. If it doesn&rsquo;t, use the button below.</p>
+        <a class="btn btn-primary" id="auditDownload" href="/assets/revenue-leakage-audit.pdf" download>Download the audit <span class="arr">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="/advizo.js"></script>
+<script>
+(function(){
+  var SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxiFL4yxS3pq7q7FRwrDj8ht410I0O5LX2-cPdYfuc2JkgmqSa_r4LklhGaVD0WmG0CBQ/exec';
+  var PDF = '/assets/revenue-leakage-audit.pdf';
+  var form = document.getElementById('auditForm');
+  var success = document.getElementById('auditSuccess');
+  if(!form) return;
+  var btn = form.querySelector('.cf-submit');
+  function done(){
+    form.setAttribute('hidden',''); success.removeAttribute('hidden');
+    try{ var a=document.createElement('a'); a.href=PDF; a.download=''; document.body.appendChild(a); a.click(); a.remove(); }catch(e){}
+  }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    var data = new FormData(form);
+    data.append('page', 'Lead Magnet — Revenue Leakage Audit');
+    data.append('submittedAt', new Date().toISOString());
+    if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+    fetch(SHEET_ENDPOINT, { method:'POST', mode:'no-cors', body:data }).then(done).catch(done);
+  });
+})();
+</script>
+</body>
+</html>
