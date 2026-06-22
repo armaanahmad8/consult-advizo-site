@@ -11,7 +11,7 @@
 @keyframes caRight { from { opacity:0; transform:translateX(56px); } to { opacity:1; transform:translateX(0); } }
 @keyframes caDown  { from { opacity:0; transform:translateY(-26px); } to { opacity:1; transform:translateY(0); } }
 .ca-ready .ca-anim { opacity:0; }
-.ca-anim.ca-right.ca-play { animation: caRight .8s cubic-bezier(.22,.61,.36,1) both; }
+.ca-anim.ca-right.ca-play { animation: caRight .55s cubic-bezier(.22,.61,.36,1) both; }
 .ca-anim.ca-down.ca-play  { animation: caDown .58s cubic-bezier(.22,.61,.36,1) both; }
 @media (prefers-reduced-motion: reduce){ .ca-ready .ca-anim{ opacity:1; } .ca-anim.ca-play{ animation:none; } }
 </style>
@@ -313,8 +313,8 @@
       });
     }, { threshold:0.18 }).observe(container);
   }
-  seq(document.querySelector('.method-grid'), '.method-step', true, 130);
-  seq(document.querySelector('.why-table'), '.why-row.ca-down', false, 100);
+  seq(document.querySelector('.method-grid'), '.method-step', true, 340);
+  seq(document.querySelector('.why-table'), '.why-row.ca-down', false, 150);
 })();
 </script>
 
