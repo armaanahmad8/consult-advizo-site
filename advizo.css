@@ -206,12 +206,14 @@ section{ position:relative; }
 .reveal.d1{ transition-delay:.08s; } .reveal.d2{ transition-delay:.16s; }
 .reveal.d3{ transition-delay:.24s; } .reveal.d4{ transition-delay:.32s; } .reveal.d5{ transition-delay:.40s; }
 .reveal.d6{ transition-delay:.48s; } .reveal.d7{ transition-delay:.56s; }
-/* method steps slide in from the right, one by one */
-.method-step.reveal{ transform:translateX(48px); }
+/* method steps slide in from the right, one by one
+   (re-declare transition — .method-step's own 'transition:background' was clobbering transform/opacity) */
+.method-step.reveal{ transform:translateX(48px); transition:opacity .85s var(--ease), transform .85s var(--ease), background .4s; }
 .method-step.reveal.in{ transform:none; }
-/* comparison rows drop in top-to-bottom (ticks & crosses cascade down) */
-.why-row.reveal{ transform:translateY(-18px); }
-.why-row.reveal.in{ transform:none; }
+/* comparison rows drop in top-to-bottom (ticks & crosses cascade down)
+   (.why-table prefix beats the '.why-row:not(.why-head){transition:background}' rule) */
+.why-table .why-row.reveal{ transform:translateY(-18px); transition:opacity .7s var(--ease), transform .7s var(--ease), background .25s; }
+.why-table .why-row.reveal.in{ transform:none; }
 /* make the "Large consulting firms" header column readable */
 .why-head .why-them{ color:#dde8e2; }
 @media(prefers-reduced-motion:reduce){ .reveal{ opacity:1; transform:none; transition:none; } html{ scroll-behavior:auto; } }
