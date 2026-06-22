@@ -6,6 +6,15 @@
 <title>Consult Advizo — Big 4-grade growth & AI consulting</title>
 <meta name="description" content="Big 4-grade growth and AI consulting for companies the Big 4 can't afford to serve. Strategy, transformation and AI implementation across India, the GCC and the USA.">
 <link rel="stylesheet" href="/advizo.css">
+<style>
+/* Scroll-in animations (keyframes — immune to the elements' own transition:background) */
+@keyframes caRight { from { opacity:0; transform:translateX(56px); } to { opacity:1; transform:translateX(0); } }
+@keyframes caDown  { from { opacity:0; transform:translateY(-26px); } to { opacity:1; transform:translateY(0); } }
+.ca-ready .ca-anim { opacity:0; }
+.ca-anim.ca-right.ca-play { animation: caRight .8s cubic-bezier(.22,.61,.36,1) both; }
+.ca-anim.ca-down.ca-play  { animation: caDown .58s cubic-bezier(.22,.61,.36,1) both; }
+@media (prefers-reduced-motion: reduce){ .ca-ready .ca-anim{ opacity:1; } .ca-anim.ca-play{ animation:none; } }
+</style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BK64XNJ0NB"></script>
 <script>
@@ -231,11 +240,11 @@
       <h2 class="h1 balance" style="margin:.5rem 0 0; color:#fff">A disciplined path from<br>diagnosis to results.</h2>
     </div>
     <div class="method-grid">
-      <div class="method-step reveal d5"><span class="ms-no">01</span><h4>Discovery</h4><p>A diagnostic that maps current state, goals and constraints — fixed scope, fixed timeline.</p></div>
-      <div class="method-step reveal d4"><span class="ms-no">02</span><h4>Diagnosis</h4><p>Root-cause analysis of the revenue engine and an ROI-ranked AI opportunity map.</p></div>
-      <div class="method-step reveal d3"><span class="ms-no">03</span><h4>Strategy Design</h4><p>A 90-day roadmap co-created with your team — never a generic template.</p></div>
-      <div class="method-step reveal d2"><span class="ms-no">04</span><h4>Execution</h4><p>Hands-on builds with your team on the ground — playbooks, processes, tooling.</p></div>
-      <div class="method-step reveal d1"><span class="ms-no">05</span><h4>Results &amp; Scale</h4><p>Outcomes measured against a contracted metric, documented, and compounded.</p></div>
+      <div class="method-step ca-anim ca-right"><span class="ms-no">01</span><h4>Discovery</h4><p>A diagnostic that maps current state, goals and constraints — fixed scope, fixed timeline.</p></div>
+      <div class="method-step ca-anim ca-right"><span class="ms-no">02</span><h4>Diagnosis</h4><p>Root-cause analysis of the revenue engine and an ROI-ranked AI opportunity map.</p></div>
+      <div class="method-step ca-anim ca-right"><span class="ms-no">03</span><h4>Strategy Design</h4><p>A 90-day roadmap co-created with your team — never a generic template.</p></div>
+      <div class="method-step ca-anim ca-right"><span class="ms-no">04</span><h4>Execution</h4><p>Hands-on builds with your team on the ground — playbooks, processes, tooling.</p></div>
+      <div class="method-step ca-anim ca-right"><span class="ms-no">05</span><h4>Results &amp; Scale</h4><p>Outcomes measured against a contracted metric, documented, and compounded.</p></div>
     </div>
   </div>
 </section>
@@ -254,12 +263,12 @@
         <span class="why-us">Consult Advizo</span>
         <span class="why-them">Large consulting firms</span>
       </div>
-      <div class="why-row reveal d1"><span class="why-dim">Focus</span><span class="why-us">100% growth &amp; mid-market</span><span class="why-them">Enterprise-first; growth is an afterthought</span></div>
-      <div class="why-row reveal d2"><span class="why-dim">Pricing</span><span class="why-us">Right-sized, published, flexible</span><span class="why-them">Premium, built for enterprise budgets</span></div>
-      <div class="why-row reveal d3"><span class="why-dim">Turnaround</span><span class="why-us">Agile, execution-led delivery</span><span class="why-them">Slow, process-heavy cycles</span></div>
-      <div class="why-row reveal d4"><span class="why-dim">Domain depth</span><span class="why-us">Industry-specialist practitioners</span><span class="why-them">Generalist teams running templates</span></div>
-      <div class="why-row reveal d5"><span class="why-dim">Relationship</span><span class="why-us">Direct with firm leadership</span><span class="why-them">Junior teams; senior sign-off only</span></div>
-      <div class="why-row reveal d6"><span class="why-dim">Markets</span><span class="why-us">Fluent in India, GCC &amp; USA</span><span class="why-them">Single-market, poorly adapted</span></div>
+      <div class="why-row ca-anim ca-down"><span class="why-dim">Focus</span><span class="why-us">100% growth &amp; mid-market</span><span class="why-them">Enterprise-first; growth is an afterthought</span></div>
+      <div class="why-row ca-anim ca-down"><span class="why-dim">Pricing</span><span class="why-us">Right-sized, published, flexible</span><span class="why-them">Premium, built for enterprise budgets</span></div>
+      <div class="why-row ca-anim ca-down"><span class="why-dim">Turnaround</span><span class="why-us">Agile, execution-led delivery</span><span class="why-them">Slow, process-heavy cycles</span></div>
+      <div class="why-row ca-anim ca-down"><span class="why-dim">Domain depth</span><span class="why-us">Industry-specialist practitioners</span><span class="why-them">Generalist teams running templates</span></div>
+      <div class="why-row ca-anim ca-down"><span class="why-dim">Relationship</span><span class="why-us">Direct with firm leadership</span><span class="why-them">Junior teams; senior sign-off only</span></div>
+      <div class="why-row ca-anim ca-down"><span class="why-dim">Markets</span><span class="why-us">Fluent in India, GCC &amp; USA</span><span class="why-them">Single-market, poorly adapted</span></div>
     </div>
     <div class="why-foot reveal d2">
       <p><strong>The short version:</strong> senior people, sector depth and cross-border fluency — sized to your business, not an enterprise budget.</p>
@@ -286,18 +295,26 @@
 <script src="/advizo.js"></script>
 <script src="/hero-charts.js"></script>
 <script>
-/* Replay the engage boxes & comparison rows each time they scroll into view */
+/* Keyframe scroll-in: engage boxes (right-to-left) + comparison rows (top-to-bottom), replayed on each entry */
 (function(){
   if(!('IntersectionObserver' in window)) return;
-  var els = document.querySelectorAll('.method-step, .why-table .why-row.reveal');
-  if(!els.length) return;
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if(en.isIntersecting){ en.target.classList.add('in'); }
-      else { en.target.classList.remove('in'); }
-    });
-  }, { threshold:0.25 });
-  els.forEach(function(e){ io.observe(e); });
+  document.documentElement.classList.add('ca-ready');
+  function seq(container, sel, reverse, step){
+    if(!container) return;
+    var items = [].slice.call(container.querySelectorAll(sel));
+    if(reverse) items.reverse();
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          items.forEach(function(el,i){ setTimeout(function(){ el.classList.add('ca-play'); }, i*step); });
+        } else {
+          items.forEach(function(el){ el.classList.remove('ca-play'); });
+        }
+      });
+    }, { threshold:0.18 }).observe(container);
+  }
+  seq(document.querySelector('.method-grid'), '.method-step', true, 130);
+  seq(document.querySelector('.why-table'), '.why-row.ca-down', false, 100);
 })();
 </script>
 
