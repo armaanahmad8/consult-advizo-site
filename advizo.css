@@ -205,6 +205,15 @@ section{ position:relative; }
 .reveal.in{ opacity:1; transform:none; }
 .reveal.d1{ transition-delay:.08s; } .reveal.d2{ transition-delay:.16s; }
 .reveal.d3{ transition-delay:.24s; } .reveal.d4{ transition-delay:.32s; } .reveal.d5{ transition-delay:.40s; }
+.reveal.d6{ transition-delay:.48s; } .reveal.d7{ transition-delay:.56s; }
+/* method steps slide in from the right, one by one */
+.method-step.reveal{ transform:translateX(48px); }
+.method-step.reveal.in{ transform:none; }
+/* comparison rows drop in top-to-bottom (ticks & crosses cascade down) */
+.why-row.reveal{ transform:translateY(-18px); }
+.why-row.reveal.in{ transform:none; }
+/* make the "Large consulting firms" header column readable */
+.why-head .why-them{ color:#dde8e2; }
 @media(prefers-reduced-motion:reduce){ .reveal{ opacity:1; transform:none; transition:none; } html{ scroll-behavior:auto; } }
 
 /* ---------- Misc utilities ---------- */
