@@ -104,6 +104,7 @@
               <li><a href="/about/#why">Why Consult Advizo</a></li>
               <li><a href="/insights/">Insights</a></li>
               <li><a href="/contact/">Contact</a></li>
+              <li><a href="/careers/">Careers</a></li>
             </ul>
           </div>
           <div class="foot-col">
@@ -121,7 +122,7 @@
         <div class="foot-bottom">
           <span>© ${new Date().getFullYear()} Consult Advizo — A registered Private Limited consulting firm.</span>
           <span style="display:flex; gap:22px">
-            <a href="#">Privacy</a><a href="#">Terms</a>
+            <a href="/privacy/">Privacy</a><a href="/terms/">Terms</a>
           </span>
         </div>
       </div>`;
