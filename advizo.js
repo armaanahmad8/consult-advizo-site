@@ -100,6 +100,8 @@
             <h4>Firm</h4>
             <ul>
               <li><a href="/industries/">Industries</a></li>
+              <li><a href="/gcc/">Consulting in the Gulf</a></li>
+              <li><a href="/usa/">Consulting in the USA</a></li>
               <li><a href="/about/">About &amp; Team</a></li>
               <li><a href="/about/#why">Why Consult Advizo</a></li>
               <li><a href="/insights/">Insights</a></li>
