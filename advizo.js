@@ -30,10 +30,25 @@
 
   /* ---- NAV ---- */
   function buildNav(){
-    const links = PAGES.map(p =>
-      `<a href="${p.href}" ${p.href===here?'class="active"':''}>${p.label}</a>`).join('');
-    const mlinks = PAGES.map(p =>
-      `<a href="${p.href}" ${p.href===here?'class="active"':''}>${p.label}</a>`).join('');
+    const MARKETS = [
+      { href:'/gcc/', label:'Consult Advizo in Gulf' },
+      { href:'/usa/', label:'Consult Advizo in USA' }
+    ];
+    const links = PAGES.map(p => {
+      const a = `<a href="${p.href}" ${p.href===here?'class="active"':''}>${p.label}</a>`;
+      if(p.label==='Home'){
+        const sub = MARKETS.map(m=>`<a href="${m.href}">${m.label}</a>`).join('');
+        return `<span class="nav-dd-wrap">${a}<button class="nav-caret" type="button" aria-label="Markets">▾</button><span class="nav-dd">${sub}</span></span>`;
+      }
+      return a;
+    }).join('');
+    const mlinks = PAGES.map(p => {
+      const a = `<a href="${p.href}" ${p.href===here?'class="active"':''}>${p.label}</a>`;
+      if(p.label==='Home'){
+        return a + MARKETS.map(m=>`<a class="m-sub" href="${m.href}">${m.label}</a>`).join('');
+      }
+      return a;
+    }).join('');
 
     const nav = document.createElement('header');
     nav.className = 'nav';
@@ -100,8 +115,8 @@
             <h4>Firm</h4>
             <ul>
               <li><a href="/industries/">Industries</a></li>
-              <li><a href="/gcc/">Consulting in the Gulf</a></li>
-              <li><a href="/usa/">Consulting in the USA</a></li>
+              <li><a href="/gcc/">Consult Advizo in Gulf</a></li>
+              <li><a href="/usa/">Consult Advizo in USA</a></li>
               <li><a href="/about/">About &amp; Team</a></li>
               <li><a href="/about/#why">Why Consult Advizo</a></li>
               <li><a href="/insights/">Insights</a></li>
