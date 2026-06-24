@@ -31,21 +31,19 @@
   /* ---- NAV ---- */
   function buildNav(){
     const MARKETS = [
-      { href:'/gcc/', label:'Consult Advizo in Gulf' },
-      { href:'/usa/', label:'Consult Advizo in USA' }
+      { href:'/gcc/', label:'GCC' },
+      { href:'/usa/', label:'USA' }
     ];
+    const inRegion = (here==='/gcc/' || here==='/usa/');
+    const regionsDD = `<span class="nav-dd-wrap nav-regions"><span class="nav-dd-label${inRegion?' active':''}">Regions</span><button class="nav-caret" type="button" aria-label="Regions">▾</button><span class="nav-dd">${MARKETS.map(m=>`<a href="${m.href}">${m.label}</a>`).join('')}</span></span>`;
     const links = PAGES.map(p => {
       const a = `<a href="${p.href}" ${p.href===here?'class="active"':''}>${p.label}</a>`;
-      if(p.label==='Home'){
-        const sub = MARKETS.map(m=>`<a href="${m.href}">${m.label}</a>`).join('');
-        return `<span class="nav-dd-wrap">${a}<button class="nav-caret" type="button" aria-label="Markets">▾</button><span class="nav-dd">${sub}</span></span>`;
-      }
-      return a;
+      return p.label==='Industries' ? a + regionsDD : a;
     }).join('');
     const mlinks = PAGES.map(p => {
       const a = `<a href="${p.href}" ${p.href===here?'class="active"':''}>${p.label}</a>`;
-      if(p.label==='Home'){
-        return a + MARKETS.map(m=>`<a class="m-sub" href="${m.href}">${m.label}</a>`).join('');
+      if(p.label==='Industries'){
+        return a + '<span class="m-head">Regions</span>' + MARKETS.map(m=>`<a class="m-sub" href="${m.href}">${m.label}</a>`).join('');
       }
       return a;
     }).join('');
