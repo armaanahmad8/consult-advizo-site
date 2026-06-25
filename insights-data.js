@@ -42,6 +42,75 @@ window.ADVIZO_INSIGHTS = [
   ]
 },
 
+/* ============ CASE STUDY: F&B MULTI-VERTICAL ============ */
+{
+  id: "fnb-multivertical-execution",
+  kind: "Case study",
+  category: "Revenue Growth",
+  title: "A new revenue channel built from zero — and operations rebuilt across the group",
+  dek: "A large multi-vertical F&amp;B business — franchise, FMCG and hospitality — engaged Advizo across two mandates. In both, the work was done on the ground with the client's team, not delivered as a recommendation and left behind.",
+  readTime: "6 min read",
+  metric: "₹50L new revenue",
+  note: "Client identity withheld under NDA. Details shared with permission, for illustrative purposes.",
+  body: [
+    {type:"stat", items:[
+      {n:"₹50L", label:"New channel revenue from 2 SKUs (Mandate 1)"},
+      {n:"6 mo", label:"Zero to revenue, new channel"},
+      {n:"15 mo", label:"Infrastructure buildout (Mandate 2)"},
+      {n:"3", label:"Business verticals served"}
+    ]},
+    {type:"h2", text:"The client"},
+    {type:"p", text:"The client operates across three distinct business lines — a franchise network, an FMCG distribution business, and a hospitality vertical with owned hotel properties. An established company with a wide catalogue and real scale, the constraint was never ambition or capital. It was execution bandwidth: every new initiative competed for the same internal attention."},
+    {type:"p", text:"Advizo was brought in twice, for two very different problems, on the same operating principle — put a team on the ground and own the outcome end to end."},
+    {type:"h2", text:"Mandate 01 — Building a distribution channel from zero"},
+    {type:"steps", items:[
+      {n:"01", title:"Ground research and ICP mapping", text:"A five-person team relocated to the target state and mapped the retail landscape — identifying touchpoints where the product category had no incumbent."},
+      {n:"02", title:"Retailer acquisition", text:"The team sold the channel into existence — directly approaching and onboarding retail outlets, not recommending that someone else should."},
+      {n:"03", title:"Network and capability", text:"Distribution structure designed, then the client's own sales team trained to sustain and scale it. GTM, operational and marketing playbooks documented for handover."}
+    ]},
+    {type:"p", text:"Result — Two SKUs, drawn from a catalogue of hundreds, generated ₹50 lakhs in six months in a channel that did not exist before the engagement. The client's team handled logistics only."},
+    {type:"h2", text:"Mandate 02 — Standardising kitchen infrastructure across the group"},
+    {type:"p", text:"Over a 15-month engagement, Advizo built and standardised kitchen infrastructure across three parts of the group — franchise outlets, internal canteens, and owned hotel properties including a three-star hotel in South India."},
+    {type:"p", text:"An Advizo-deployed architect designed and built the kitchens, sourced and aligned vendors, and negotiated rates before any work was commissioned. Advizo managed the full vendor cycle on the client's behalf — rates agreed up front, vendors invoiced, each bill reviewed and forwarded to the client, and the client paid vendors directly. Advizo held no client funds at any point."},
+    {type:"p", text:"Result — Standardised, vendor-aligned kitchen infrastructure delivered across franchise, canteen and hotel operations, with the operational complexity owned by Advizo throughout."},
+    {type:"callout", text:"Most consultants send a deck. Advizo sent a team — across two mandates and three verticals, on the ground, building the thing."}
+  ]
+},
+
+/* ============ CASE STUDY: PERSONAL CARE / SALON ============ */
+{
+  id: "personal-care-salon-channel",
+  kind: "Case study",
+  category: "Revenue Growth",
+  title: "Breaking into a new channel with zero prior access",
+  dek: "A personal care brand with a strong clinic-channel business wanted to enter professional A-level salons with a new product line. No relationships, no playbook, no route in. Advizo built all of it — and closed the channel's largest distributor.",
+  readTime: "5 min read",
+  metric: "₹35L new revenue",
+  note: "Client identity withheld under NDA. Details shared with permission, for illustrative purposes.",
+  body: [
+    {type:"stat", items:[
+      {n:"₹35L", label:"New salon-channel revenue"},
+      {n:"4 mo", label:"From first meeting to revenue"},
+      {n:"3", label:"Advizo people on the ground"},
+      {n:"0 to live", label:"Distributor access from scratch"}
+    ]},
+    {type:"h2", text:"The challenge"},
+    {type:"p", text:"The client had established distribution across India and the GCC and a strong direct-sales operation into dermatology clinics. Their new product, designed for professional salon use, needed an entirely different channel — one with its own distributor ecosystem, buying behaviour and relationship dynamics."},
+    {type:"p", text:"They had no existing relationships in that channel, no go-to-market for it, and no internal bandwidth to build it without pulling focus from a core business that was already working."},
+    {type:"h2", text:"Our approach"},
+    {type:"steps", items:[
+      {n:"01", title:"Primary research, from zero", text:"With no prior relationships in the salon ecosystem, the team spent two months mapping it on the ground — who controls access to A-level salons, how they operate, and what gets a new brand onto their roster."},
+      {n:"02", title:"Distributor identification and close", text:"Advizo identified the channel's most strategically valuable distributor and led every meeting and negotiation through to a signed relationship."},
+      {n:"03", title:"Channel GTM", text:"A salon-specific go-to-market built from scratch — target profiles, entry sequencing, distributor positioning and a sell-in approach matched to how salons actually buy."},
+      {n:"04", title:"Sales support through close", text:"The team was present in every sales meeting where the product was pitched or negotiated — on-the-ground support until the channel was generating consistent revenue."}
+    ]},
+    {type:"h2", text:"The impact"},
+    {type:"p", text:"In six months — two of research, four of active revenue — the salon channel produced ₹35 lakhs in new product revenue. A channel that had not existed for the brand twelve months earlier."},
+    {type:"p", text:"The core clinic business was undisturbed throughout. Advizo operated as a parallel execution unit, building the new channel without pulling the client's team off what was already working. Pricing remained the client's call; on-the-ground operations were Advizo's, with the client handling logistics."},
+    {type:"callout", text:"No relationships, no playbook, no route in — so we built all three, then stayed in the room until revenue moved."}
+  ]
+},
+
 /* ============ CASE STUDY 2 ============ */
 {
   id: "two-cr-to-eight-cr",
